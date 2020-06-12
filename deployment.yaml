@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    service: udagram-reverse-proxy
+  name: udagram-reverse-proxy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: udagram-reverse-proxy
+    spec:
+      containers:
+      - image: rfsimoes/udagram-reverse-proxy
+        name: udagram-reverse-proxy
+        imagePullPolicy: Always                
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+
+
